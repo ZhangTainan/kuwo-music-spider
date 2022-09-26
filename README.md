@@ -1,7 +1,5 @@
 # kuwo-music-spider
-<<<<<<< HEAD
-酷我音乐的爬虫
-=======
+
 ## 这是一个简单的酷我音乐爬虫
 
 ![image-20220926232708846](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/image-20220926232708846.png)
