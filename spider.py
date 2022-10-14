@@ -44,11 +44,12 @@ class Spider:
             mp3_url = res_for_mp3["data"]["url"]
             # 重新封装一个歌曲信息字典,存放歌曲名、歌手、图片、mp3地址
             # TODO:可能出现没有图片的情况,判断一下是不是以jpg、png结尾,这时需要把图片给个默认值
-            mp3 = {"name": music["name"], "pic_url": music["pic"], "artist": music["artist"], "url": mp3_url}
+            mp3 = {"name": music["name"], "pic_url": music["pic"], "artist": music["artist"], "url": mp3_url,
+                   "rid": music["rid"]}
             self.mp3_list.append(mp3)
         return self.mp3_list
 
 
 if __name__ == '__main__':
-    s = Spider("周杰伦", 1, 5)
+    s = Spider("周杰伦", 1, 30)
     print(s.get_mp3_urls())
