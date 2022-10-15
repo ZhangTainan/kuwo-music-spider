@@ -1,10 +1,5 @@
-/chen-yi-xun/
-/test.py
-/zhou-jie-lun/
-/xue-zhi-qian/
-/lin-jun-jie/
 /venv/
 /.idea/
 __pycache__/
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/kuwo-music-spider.iml
+/static/
+
