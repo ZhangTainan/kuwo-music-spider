@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from db import select
@@ -29,3 +30,7 @@ def get(keyword: str, page: int, num_per_page: int) -> list:
             "url": mp3_url
         })
     return songs
+
+
+if __name__ == '__main__':
+    uvicorn.run("search_static:app", host="0.0.0.0", port=9000)
