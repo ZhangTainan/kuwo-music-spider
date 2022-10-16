@@ -36,7 +36,7 @@ VALUES ( '{}', '{}', '{}');
 '''
 
 select_sql = '''
-SELECT `rid`, `name`, `artist` 
+SELECT DISTINCT `rid`, `name`, `artist` 
 FROM `music`.`music` WHERE `name` LIKE '%{}%' OR `artist` LIKE '%{}%' LIMIT {},{};
 '''
 
@@ -62,5 +62,5 @@ def select(keyword: str, page: int, num_per_page: int) -> list:
 if __name__ == '__main__':
     cursor.execute(create_db)
     cursor.execute(create_table)
-    # print(insert(100, "demo", "demo"))
+    print(insert(100, "demo", "demo"))
     print(select("demo", 1, 10))
