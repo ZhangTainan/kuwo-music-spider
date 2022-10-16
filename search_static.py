@@ -7,8 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 # 配置允许所有端跨域
-CORSMiddleware(app=app, allow_origins=["*"])
-app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+)
 app.mount('/static', StaticFiles(directory='static'),
           name='static')
 
