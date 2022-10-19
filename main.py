@@ -4,11 +4,12 @@ from flask import Flask
 from flask import request
 from spider import Spider
 from db import select
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 
-@app.route("/get_music", methods=["POST"])
+@app.route("/search", methods=["POST"])
 def get_music():
     data = request.json
     mp3_list = Spider(**data).get_mp3_urls()
@@ -20,8 +21,8 @@ def get_music():
 def sort():
     args = request.args
     keyword = args.get("keyword", "周杰伦")
-    page = args.get("page", 1)
-    num_per_page = args.get("num_per_page", 30)
+    page = int(args.get("page", 1))
+    num_per_page = int(args.get("num_per_page", 30))
     res = select(keyword, page, num_per_page)
     songs = []
     for r in res:
