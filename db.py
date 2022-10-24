@@ -11,6 +11,7 @@ conn = pymysql.connect(
     autocommit=True,  # 自动提交事务
     cursorclass=pymysql.cursors.DictCursor  # 配置返回字典类型数据
 )
+# TODO 存在数据库连接池过期问题
 cursor = conn.cursor()
 
 create_db = '''
