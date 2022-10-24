@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from db import select
+from db_sqlalchemy import select
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

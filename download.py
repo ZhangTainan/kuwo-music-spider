@@ -4,7 +4,7 @@ from threading import Thread
 from concurrent.futures import ThreadPoolExecutor
 from xpinyin import Pinyin
 import os
-from db import insert
+from db_sqlalchemy import add as insert
 
 
 def isAllChinese(s: str) -> bool:

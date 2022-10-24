@@ -3,7 +3,7 @@ import json
 from flask import Flask
 from flask import request
 from spider import Spider
-from db import select
+from db_sqlalchemy import select
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -26,11 +26,11 @@ def sort():
     res = select(keyword, page, num_per_page)
     songs = []
     for r in res:
-        rid = r.get('rid')
-        name = r.get('name')
-        artist = r.get('artist')
-        cover_url = f"127.0.0.1:8000/static/{rid}.jpg"
-        mp3_url = f"127.0.0.1:8000/static/{rid}.mp3"
+        rid = r.rid
+        name = r.name
+        artist = r.artist
+        cover_url = f"127.0.0.1:9000/static/{rid}.jpg"
+        mp3_url = f"127.0.0.1:9000/static/{rid}.mp3"
         songs.append({
             "name": name,
             "artist": artist,
