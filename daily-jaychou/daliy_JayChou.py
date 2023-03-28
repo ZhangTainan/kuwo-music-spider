@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+from flask import request,jsonify
 from flask_cors import CORS
 from copyheaders import headers_raw_to_dict
 from db_sqlalchemy import search_JayChou, random_JayChou
@@ -12,8 +12,11 @@ CORS(app, supports_credentials=True)
 @app.route('/daily-jaychou/search')
 def search():
     name = request.args.get("name", "一点点")
-    music = search_JayChou(name)
-    return getMusicWithLrc(music.rid)
+    music_list = search_JayChou(name)
+    info_list=[]
+    for music in music_list:
+        info_list.append(getMusicWithLrc(music.rid))
+    return info_list
 
 
 @app.route("/daily-jaychou/random")
