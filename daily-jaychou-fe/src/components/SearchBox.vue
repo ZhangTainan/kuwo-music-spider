@@ -1,5 +1,4 @@
 <template>
-    123
     <div class="search-box">
         <input class="search-input" type="text" v-model="query" placeholder="请输入歌名" @keydown.enter="search" />
         <button class="search-btn" @click="search">搜索</button>
@@ -10,9 +9,12 @@
 import { ref } from 'vue';
 
 const query = ref("")
-const search = async (name) => {
+const search = async () => {
+    if (!query) {
+
+    }
     try {
-        const response = await fetch(`http://localhost:8000/daily-jaychou/search?name=${name}`);
+        const response = await fetch(`http://localhost:8000/daily-jaychou/search?name=${query.value}`);
         const data = await response.json();
         console.log(data);
         return data;
