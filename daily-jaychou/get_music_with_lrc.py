@@ -18,4 +18,4 @@ def getMusicWithLrc(musicId):
 
 
 if __name__ == '__main__':
-    print(getMusicWithLrc(4148191))
+    print(getMusicWithLrc(728676))

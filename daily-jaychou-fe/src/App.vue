@@ -1,10 +1,7 @@
 <template>
-  123
-  <SearchBox></SearchBox>
-  <Test></Test>
+  <RandomJayChou></RandomJayChou>
 </template>
 <script setup>
-import SearchBox from "./components/SearchBox.vue";
-import Test from "./components/Test.vue";
+import RandomJayChou from "./components/RandomJayChou.vue";
 </script>
 <style></style>
