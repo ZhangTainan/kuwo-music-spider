@@ -12,7 +12,7 @@
 
 ### 克隆项目：
 
-`git clone git@github.com:ZhangTainan/kuwo-music-spider.git`
+`git clone -b daily-jaychou git@github.com:ZhangTainan/kuwo-music-spider.git`
 
 ### 安装依赖
 
