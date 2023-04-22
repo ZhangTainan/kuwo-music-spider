@@ -1,67 +1,57 @@
-# kuwo-music-spider
+# Daily-JayChou
 
-## 这是一个简单的酷我音乐爬虫
+## 这是基于[酷我音乐爬虫](https://github.com/ZhangTainan/kuwo-music-spider)
 
-![image-20220926232708846](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/image-20220926232708846.png)
+## 发展出来了一个分支项目。
 
-- ### spider.py
+![daily-jaychou](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/daily-jaychou.png)
 
-  - #### 封装的一个酷我音乐爬虫类，直接运行可以获取到MP3地址等信息，点击链接可以直接打开，后期将更新下载的程序
+# 指南
 
-- ### db.py
+## 后端
 
-  - #### 原生pymysql操作数据库(TODO注释中标注了存在的一些问题)
+### 克隆项目：
 
-- ### db_sqlalchemy.py
+`git clone -b daily-jaychou git@github.com:ZhangTainan/kuwo-music-spider.git`
 
-  - #### 使用sqlalchemy的方式操作数据库（推荐）
+### 安装依赖
 
-- ### download.py
+`pip install -r requirements.txt`
 
-  - #### 用于下载并将歌曲信息存入数据库
+### 导入数据库
 
-- ### search_static
-
-  - #### 基于fastapi起的接口服务
-
-  - #### 从数据库中搜索已经下载的歌曲信息，并得到对应的静态资源地址
-
-  - #### 内置一个get接口，在浏览器访问host:port/docs即可进行测试接口
-
-  - ![image-20221024135303499](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/image-20221024135303499.png)
-
-- ### main.py
-
-  - #### 是用flask起的一个服务，可以自己用来做接口
-
-  - #### 内置的search接口可以直接使用
-
-  - #### 内置的sort接口使用时请确保已经使用download.py将歌曲下载到本地和数据库
-
-## 使用方式
-
-### 克隆项目
-
-```bash
-git clone git@github.com:ZhangTainan/kuwo-music-spider.git
+```sql
+drop database if exists music;
+create database music default charset utf8;
+use music;
+-- 下面中括号的内容替换成daily-jaychou.sql的绝对路径
+source [absolute path of daily_jaychou.sql];
 ```
 
-### 进入项目目录
+### 配置数据库
+
+在`db_sqlalchemy.py`中修改自己的数据库链接信息
+
+
+
+### 运行
+
+`python daily-jaychou.py`
+
+![image-20230328105927804](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/image-20230328105927804.png)
+
+## 前端
+
+前端是基于vite和vue3的项目。
+
+### 安装依赖与启动服务
 
 ```bash
-cd kuwo-music-spider
+cd daily-jaychou-fe
+npm i
+npm run dev
 ```
 
-### 安装第三方库
+![image-20230328110326428](https://cdn.jsdelivr.net/gh/ZhangTainan/Drawing-bed/imgs/image-20230328110326428.png)
 
-```bash
-pip install -r requirements.txt
-```
-
-#### 	注：
-
-###### 		*本项目使用python的版本为3.10.6，如果该过程出现安装包失败，请提升python版本或者降低包的版本*
-
-### 运行项目
-
-##### 	每个.py文件均可单独运行
+在浏览器中访问本地的5173端口即可。

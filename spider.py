@@ -23,7 +23,6 @@ class Spider:
     # 获取播放地址的url
     url_for_mp3_url = "http://www.kuwo.cn/api/v1/www/music/playUrl?mid={}&type=mp3&httpsStatus=1&reqId=f0f57820-089d-11ed-a75f-6357d35c8f78"
 
-
     # 初始化时拼接url_for_search,接收三个参数:查询关键字,第几页,每页的歌曲数
     def __init__(self, keyword: str, page: int, num_per_page: int):
         self.url_for_search = self.url_for_search.format(keyword, page, num_per_page)

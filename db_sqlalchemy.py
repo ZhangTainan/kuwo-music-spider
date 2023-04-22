@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import or_
 from sqlalchemy.dialects.mysql import insert
 import pymysql
+from random import randint
 
 pymysql.install_as_MySQLdb()
 
@@ -47,6 +48,25 @@ class Music(Base):
         })
 
 
+class JayChou(Base):
+    """
+    music表的实体类
+    """
+    __tablename__ = 'daily_jaychou'  # 指定表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    rid = Column(Integer, nullable=False, comment="歌曲id")
+    name = Column(String(255), nullable=False, comment="歌曲名")
+    artist = Column(String(255), nullable=False, comment="歌手")
+
+    def __repr__(self):
+        return str({
+            "id": self.id,
+            "rid": self.rid,
+            "name": self.name,
+            "artist": self.artist
+        })
+
+
 def select(keyword: str, page: int, num_per_page: int) -> list:
     return session.query(Music).filter(
         or_(
@@ -59,6 +79,14 @@ def add(rid: int, name: str, artist: str) -> int:
     insert_model = insert(Music).values(rid=rid, name=name, artist=artist)
     result = session.execute(insert_model)
     return result.rowcount
+
+
+def search_JayChou(name: str):
+    return session.query(JayChou).filter(JayChou.name.like(f"%{name}%")).all()
+
+
+def random_JayChou():
+    return session.query(JayChou).filter(JayChou.id.like(randint(1,162))).first()
 
 
 if __name__ == '__main__':
